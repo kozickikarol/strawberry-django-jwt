@@ -108,7 +108,7 @@ class JWTSettings:
     @property
     def user_settings(self):
         if not hasattr(self, "_user_settings"):
-            self._user_settings = getattr(settings, "strawberry_django_jwt", {})
+            self._user_settings = getattr(settings, "GRAPHQL_JWT", {})
         return self._user_settings
 
     def reload(self):
@@ -124,7 +124,7 @@ class JWTSettings:
 def reload_settings(*args, **kwargs):
     setting = kwargs["setting"]
 
-    if setting == "strawberry_django_jwt":
+    if setting == "GRAPHQL_JWT":
         jwt_settings.reload()
 
 
